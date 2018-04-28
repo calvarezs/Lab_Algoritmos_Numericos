@@ -11,7 +11,7 @@
     %Tiempo acumulado de ejecucion por iteracion -> tiempo
     %Numero acumulado de instrucciones ejecutadas -> nInstrucciones
 function[resultado,error,tiempo,nInstrucciones] = biseccion(a,b,func,iter) 
-    nInstrucciones(1) = 0;
+    nInstrucciones = 0;
     tiempo = 0;
     resultado(1) = b;
     error(1) = 1;
@@ -46,16 +46,16 @@ function[resultado,error,tiempo,nInstrucciones] = biseccion(a,b,func,iter)
             end
             a=c;
             b=c;
-            nInstrucciones(i+1) = nInstrucciones(end);
+            return;
+        else
+            nInstrucciones = nInstrucciones + 3;
         end
         % Si a y c tienen el mismo signo, entonces c será el nuevo valor de
         % c, sino se deduce que son b y c los valores de igual signo
         if(sign(func(a)) == sign(func(c)))
-            a = c; 
-            nInstrucciones(i+1) = nInstrucciones(i) + 3;
+            a = c;  
         else
-            b = c;
-            nInstrucciones(i+1) = nInstrucciones(i) + 3;
+            b = c; 
         end
     end
     return

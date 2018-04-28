@@ -1,0 +1,5 @@
+%Funcion que hace una derivada (proximamente sin limit)
+function resultado  = derivar(funcion, valor)
+    f = funcion()/(w1-valor);
+    limit(funcion,w1,valor); 
+end

@@ -1,3 +1,5 @@
+syms h;
+
 f1 = @(x) x - 2^(-x);
 f2 = @(x) exp(-x) - x^2 + 3*x - 2;
 f3 = @(x) x^3 - 7*x^2 + 14*sin(2*pi*x) - 6;
@@ -16,8 +18,11 @@ iter = 100;
 
 [resultado_bisec,error_bisec,tiempo_bisec,nInstrucciones_bisec] = biseccion(1,10,f5,iter);
 [resultado_rf,error_rf,tiempo_rf,nInstrucciones_rf] = regula_falsi(1,10,f5,iter); 
-[resultado_nr,error_nr,tiempo_nr,nInstrucciones_nr] = newton_raphson(1,f5,df5d1,iter); 
+[resultado_nr,error_nr,tiempo_nr,nInstrucciones_nr] = newton_raphson(1,f5,iter); 
+[resultado_sec,error_sec,tiempo_sec,nInstrucciones_sec] = secante(1,2,f5,iter);
 
+[tamanios] = [length(resultado_bisec) length(resultado_rf) length(resultado_nr)];
+%Graficar([resultado_bisec resultado_rf resultado_nr], tamanios)
 %plot(resultado)
 %plot(error)
 %plot(tiempo)
