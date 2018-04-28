@@ -1,0 +1,24 @@
+f1 = @(x) x - 2^(-x);
+f2 = @(x) exp(-x) - x^2 + 3*x - 2;
+f3 = @(x) x^3 - 7*x^2 + 14*sin(2*pi*x) - 6;
+f4 = @(x) x^2 + x - 12;
+f5 = @(x) x^2 - 4;
+
+df1d1 = @(x) 1 + ln(2)*(2^(-x));
+df2d1 = @(x) -exp(-x) - 2*x + 3;
+df3d1 = @(x) 3*x^2 - 14*x + 28*pi*cos(2*pi*x);
+df4d1 = @(x) 2*x + 1;
+df5d1 = @(x) 2*x;
+
+tol = 10^(-18);
+iter = 100;
+
+
+[resultado_bisec,error_bisec,tiempo_bisec,nInstrucciones_bisec] = biseccion(1,10,f5,iter);
+[resultado_rf,error_rf,tiempo_rf,nInstrucciones_rf] = regula_falsi(1,10,f5,iter); 
+[resultado_nr,error_nr,tiempo_nr,nInstrucciones_nr] = newton_raphson(1,f5,df5d1,iter); 
+
+%plot(resultado)
+%plot(error)
+%plot(tiempo)
+%plot(nInstrucciones);
